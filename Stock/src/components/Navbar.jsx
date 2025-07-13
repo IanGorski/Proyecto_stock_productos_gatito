@@ -1,7 +1,7 @@
 import { AppBar, Toolbar, Typography, Box, Badge } from "@mui/material";
 import CategoryIcon from "@mui/icons-material/Category";
 import InventoryIcon from "@mui/icons-material/Inventory";
-import CatLogo from "./CatLogo"; // <-- IMPORTA TU LOGO ANIMADO
+import CatLogo from "./CatLogo"; // <-- Acá puedo importar el logo del gatito animado
 
 function Navbar({ products, categories }) {
   return (

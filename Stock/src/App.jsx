@@ -15,8 +15,8 @@ function App() {
   const [products, setProducts] = useState(initialProducts);
 
   const handleAddProduct = () => {
-    // Aquí deberías mostrar un modal o formulario de agregar producto
-    // Este ejemplo agrega un producto genérico (puedes eliminarlo si usas un modal/form)
+    // Lógica para agregar un producto/formulario
+    // Puedo implementar la lógica para agregar un nuevo producto
     const newProduct = {
       id: products.length + 1,
       name: "Nuevo producto",
