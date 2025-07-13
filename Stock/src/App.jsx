@@ -5,6 +5,7 @@ import theme from "./theme";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import WaveBackground from "./components/WaveBackground";
+import Footer from "./components/Footer";
 
 // Inicializar sin productos ni categorías
 const initialCategories = [];
@@ -16,7 +17,6 @@ function App() {
 
   const handleAddProduct = () => {
     // Lógica para agregar un producto/formulario
-    // Puedo implementar la lógica para agregar un nuevo producto
     const newProduct = {
       id: products.length + 1,
       name: "Nuevo producto",
@@ -30,10 +30,10 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Box sx={{ position: "relative", minHeight: "100vh", background: "#FFF8F0" }}>
+      <Box sx={{ position: "relative", minHeight: "100vh", background: "#FFF8F0", display: "flex", flexDirection: "column" }}>
         <WaveBackground />
         <Navbar products={products} categories={categories} />
-        <Box sx={{ position: "relative", zIndex: 1 }}>
+        <Box sx={{ position: "relative", zIndex: 1, flex: 1 }}>
           <Home
             products={products}
             setProducts={setProducts}
@@ -42,6 +42,8 @@ function App() {
             onAddProduct={handleAddProduct}
           />
         </Box>
+        {/* ---- Footer ---- */}
+        <Footer />
       </Box>
     </ThemeProvider>
   );
