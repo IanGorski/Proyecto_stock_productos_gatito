@@ -33,7 +33,7 @@ function Footer() {
         </IconButton>
         <IconButton
           component={Link}
-          href="https://instagram.com/"
+          href="https://instagram.com/resistirseguir"
           target="_blank"
           rel="noopener"
           sx={{ color: "#fff" }}
@@ -42,7 +42,7 @@ function Footer() {
         </IconButton>
         <IconButton
           component={Link}
-          href="mailto:contacto@tudominio.com"
+          href="mailto:gorskiandev@gmail.com"
           sx={{ color: "#fff" }}
         >
           <EmailIcon />

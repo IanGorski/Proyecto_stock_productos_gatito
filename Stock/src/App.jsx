@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { CssBaseline, Box } from "@mui/material";
-import { ThemeProvider } from "@mui/material/styles";
-import theme from "./theme";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import WaveBackground from "./components/WaveBackground";
@@ -28,7 +26,7 @@ function App() {
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <>
       <CssBaseline />
       <Box sx={{ position: "relative", minHeight: "100vh", background: "#FFF8F0", display: "flex", flexDirection: "column" }}>
         <WaveBackground />
@@ -45,7 +43,7 @@ function App() {
         {/* ---- Footer ---- */}
         <Footer />
       </Box>
-    </ThemeProvider>
+    </>
   );
 }
 
