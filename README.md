@@ -55,12 +55,14 @@ El sistema implementa persistencia local (localStorage), dashboards interactivos
 
 ---
 
+
 ## 🗂️ Estructura del Proyecto
+
+```text
 Stock/
 ├── public/
 ├── src/
-
-│   ├── components/         # Componentes reutilizables
+│   ├── components/               # Componentes reutilizables
 │   │   ├── AddButton.jsx           # Botón flotante para agregar productos
 │   │   ├── CategoryManager.jsx     # Gestión y edición de categorías
 │   │   ├── CatLogo.jsx             # Logo animado del gatito
@@ -75,18 +77,19 @@ Stock/
 │   │   ├── ProductList.jsx         # Listado de productos en formato tabla
 │   │   ├── SearchBar.jsx           # Barra de búsqueda y filtrado
 │   │   └── WaveBackground.jsx      # Fondo decorativo animado tipo onda
-│   ├── hooks/                      # Custom hooks (lógica reutilizable)
+│   ├── hooks/                    # Custom hooks (lógica reutilizable)
 │   │   └── useResponsiveColumns.js # Hook para columnas responsivas según pantalla
-│   ├── pages/                      # Páginas principales de la app
+│   ├── pages/                    # Páginas principales de la app
 │   │   └── Home.jsx                # Página principal con dashboard y productos
-│   ├── App.jsx                     # Componente raíz, gestiona estado global
-│   ├── main.jsx                    # Punto de entrada de la app React
-│   ├── index.css                   # Estilos globales base
-│   └── theme.jsx                   # Theming y variables de diseño
-├── package.json                    # Dependencias y scripts del proyecto
-├── vite.config.js                  # Configuración de Vite
-├── eslint.config.js                # Configuración de ESLint
-└── README.md                       # Documentación del proyecto
+│   ├── App.jsx                   # Componente raíz, gestiona estado global
+│   ├── main.jsx                  # Punto de entrada de la app React
+│   ├── index.css                 # Estilos globales base
+│   └── theme.jsx                 # Theming y variables de diseño
+├── package.json                  # Dependencias y scripts del proyecto
+├── vite.config.js                # Configuración de Vite
+├── eslint.config.js              # Configuración de ESLint
+└── README.md                     # Documentación del proyecto
+```
 
 ---
 
