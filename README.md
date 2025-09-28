@@ -1,6 +1,10 @@
 # 🐾 Stock Productos Gatito
 Sistema de Gestión de Stock para Tiendas.
 
+[![Vercel Deployment](https://img.shields.io/badge/Vercel-Live-black?logo=vercel)](https://proyecto-stock-productos-gatito.vercel.app/)
+
+> Versión desplegada: haz clic en el badge para abrir la aplicación en producción.
+
 ---
 
 ## 📖 Descripción del Proyecto
