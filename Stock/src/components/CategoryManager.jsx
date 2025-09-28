@@ -16,6 +16,7 @@ import {
   Snackbar,
   Alert,
 } from "@mui/material";
+import "./CategoryManager.css";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useState } from "react";
@@ -26,11 +27,11 @@ export default function CategoryManager({
   products,
 }) {
   const [name, setName] = useState("");
-  const [editingCategory, setEditingCategory] = useState(null);
-  const [deleteDialog, setDeleteDialog] = useState({
-    open: false,
-    category: null,
-  });
+    const [editingCategory, setEditingCategory] = useState(null);
+    const [deleteDialog, setDeleteDialog] = useState({
+      open: false,
+      category: null,
+    });
   const [error, setError] = useState("");
   const [openSnackbar, setOpenSnackbar] = useState(false);
 

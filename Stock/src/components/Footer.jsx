@@ -1,22 +1,12 @@
 import { Box, Typography, Link, IconButton } from "@mui/material";
+import "./Footer.css";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import EmailIcon from "@mui/icons-material/Email";
 
 function Footer() {
   return (
-    <Box
-      sx={{
-        bgcolor: "primary.main",
-        color: "#fff",
-        py: 3,
-        mt: 6,
-        px: { xs: 2, md: 8 },
-        display: "flex",
-        flexDirection: { xs: "column", md: "row" },
-        alignItems: "center",
-        justifyContent: "space-between",
-      }}
+    <Box className="footer"
     >
       <Typography variant="body1" sx={{ fontWeight: 500 }}>
         © 2025 Stock Gatito. Hecho con 🐾 por IanGorski.

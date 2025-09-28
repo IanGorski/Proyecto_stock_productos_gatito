@@ -1,0 +1,11 @@
+:root {
+    --dashboard-bg: #fff;
+    --dashboard-radius: 10px;
+}
+
+.dashboard {
+    background: var(--dashboard-bg);
+    border-radius: var(--dashboard-radius);
+    padding: 12px;
+    margin-bottom: 12px;
+}

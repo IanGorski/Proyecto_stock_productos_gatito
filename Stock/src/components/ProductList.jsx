@@ -14,6 +14,7 @@ import {
   Button,
   Avatar,
 } from "@mui/material";
+import "./ProductList.css";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import InfoIcon from "@mui/icons-material/Info";
@@ -54,7 +55,7 @@ export default function ProductList({
 
   return (
     <Box sx={{ mt: 3, overflowX: "auto" }}>
-      <Table>
+      <Table className="product-table">
         <TableHead>
           <TableRow>
             <TableCell><strong>Imagen</strong></TableCell>

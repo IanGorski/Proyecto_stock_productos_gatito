@@ -11,6 +11,7 @@ import {
   Button,
 } from "@mui/material";
 import ErrorIcon from "@mui/icons-material/Error";
+import "./ProductDetailModal.css";
 
 export default function ProductDetailModal({ product, categories, open, onClose }) {
   if (!product) return null;
@@ -29,40 +30,42 @@ export default function ProductDetailModal({ product, categories, open, onClose 
         </DialogTitle>
       </Fade>
       <DialogContent>
-        <Box sx={{ display: "flex", alignItems: "center", gap: 3, mb: 2 }}>
-          {product.image ? (
-            <Avatar
-              src={product.image}
-              alt={product.name}
-              variant="rounded"
-              sx={{ width: 120, height: 120 }}
-            />
-          ) : (
-            <Avatar sx={{ width: 120, height: 120 }}>
-              <ErrorIcon fontSize="large" />
-            </Avatar>
-          )}
-          <Box>
-            <Chip
-              label={`Stock: ${product.stock}`}
-              color={product.stock === 0 ? "error" : product.stock <= 3 ? "warning" : "default"}
-              size="medium"
-              sx={{ mb: 1 }}
-            />
-            <Chip
-              label={getCategoryName(product.categoryId)}
-              color="secondary"
-              size="medium"
-              sx={{ mb: 1 }}
-            />
+        <div className="product-detail-modal">
+          <Box style={{ display: "flex", alignItems: "center", gap: 24, marginBottom: 16 }}>
+            {product.image ? (
+              <Avatar
+                src={product.image}
+                alt={product.name}
+                variant="rounded"
+                className="product-detail-avatar"
+              />
+            ) : (
+              <Avatar variant="rounded" className="product-detail-avatar">
+                <ErrorIcon fontSize="large" />
+              </Avatar>
+            )}
+            <Box>
+              <Chip
+                label={`Stock: ${product.stock}`}
+                color={product.stock === 0 ? "error" : product.stock <= 3 ? "warning" : "default"}
+                size="medium"
+                style={{ marginBottom: 8 }}
+              />
+              <Chip
+                label={getCategoryName(product.categoryId)}
+                color="secondary"
+                size="medium"
+                style={{ marginBottom: 8 }}
+              />
+            </Box>
           </Box>
-        </Box>
-        <Typography variant="body1" sx={{ mb: 2 }}>
-          <b>Descripción:</b> {product.description || "Sin descripción"}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          ID: {product.id}
-        </Typography>
+          <Typography variant="body1" style={{ marginBottom: 16 }}>
+            <b>Descripción:</b> {product.description || "Sin descripción"}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            ID: {product.id}
+          </Typography>
+        </div>
       </DialogContent>
       <DialogActions>
         <Button onClick={onClose} variant="contained">

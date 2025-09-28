@@ -1,0 +1,15 @@
+:root {
+    --table-bg: #fff;
+    --table-header-bg: #ffe082;
+    --table-radius: 8px;
+}
+
+.product-table {
+    background: var(--table-bg);
+    border-radius: var(--table-radius);
+    overflow-x: auto;
+}
+
+.product-table th {
+    background: var(--table-header-bg);
+}

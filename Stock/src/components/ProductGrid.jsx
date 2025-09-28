@@ -1,4 +1,5 @@
 import { Box, Typography, Paper, Avatar, useTheme, Fade } from "@mui/material";
+import "./ProductGrid.css";
 import InventoryIcon from "@mui/icons-material/Inventory2";
 import CategoryIcon from "@mui/icons-material/Category";
 import ErrorIcon from "@mui/icons-material/Error";
@@ -37,7 +38,7 @@ export default function Dashboard({ products, categories, onCategorySelect }) {
 
   return (
     <Fade in>
-      <Box sx={{ display: "flex", gap: 3, flexWrap: "wrap", mb: 3, alignItems: "center" }}>
+  <Box className="product-grid">
         <Paper elevation={3} sx={{
           p: 2, minWidth: 170, bgcolor: theme.palette.background.paper,
           display: "flex", alignItems: "center", gap: 2

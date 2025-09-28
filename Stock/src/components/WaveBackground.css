@@ -1,0 +1,14 @@
+:root {
+    --wave-color: #ffe082;
+    --wave-height: 120px;
+}
+
+.wave-bg {
+    width: 100%;
+    height: var(--wave-height);
+    background: var(--wave-color);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 0;
+}

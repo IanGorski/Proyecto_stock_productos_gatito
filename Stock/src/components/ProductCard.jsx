@@ -1,9 +1,10 @@
 import { Card, CardContent, CardMedia, Typography, Box } from "@mui/material";
+import "./ProductCard.css";
 import InventoryIcon from "@mui/icons-material/Inventory";
 
 export default function ProductCard({ product }) {
   return (
-    <Card sx={{ maxWidth: 320, m: 2 }}>
+    <Card className="product-card" sx={{ maxWidth: 320, m: 2 }}>
       <CardMedia
         component="div"
         sx={{

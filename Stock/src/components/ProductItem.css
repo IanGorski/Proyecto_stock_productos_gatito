@@ -1,0 +1,11 @@
+:root {
+    --item-bg: #fffde7;
+    --item-radius: 8px;
+}
+
+.product-item {
+    background: var(--item-bg);
+    border-radius: var(--item-radius);
+    margin-bottom: 8px;
+    padding: 8px;
+}

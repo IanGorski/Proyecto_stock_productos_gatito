@@ -1,0 +1,13 @@
+:root {
+    --searchbar-bg: #fff;
+    --searchbar-radius: 8px;
+}
+
+.search-bar {
+    background: var(--searchbar-bg);
+    border-radius: var(--searchbar-radius);
+    padding: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}

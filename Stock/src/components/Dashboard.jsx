@@ -1,4 +1,5 @@
 import { Box, Typography, Paper, Avatar, useTheme, Fade } from "@mui/material";
+import "./Dashboard.css";
 import InventoryIcon from "@mui/icons-material/Inventory2";
 import CategoryIcon from "@mui/icons-material/Category";
 import ErrorIcon from "@mui/icons-material/Error";
@@ -26,7 +27,7 @@ export default function Dashboard({ products, categories, onCategorySelect }) {
 
   return (
     <Fade in>
-      <Box sx={{ display: "flex", gap: 3, flexWrap: "wrap", mb: 3 }}>
+  <Box className="dashboard">
         <Paper
           elevation={3}
           sx={{

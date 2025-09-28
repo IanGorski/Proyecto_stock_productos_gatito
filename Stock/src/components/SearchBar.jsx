@@ -1,4 +1,5 @@
 import { Box, TextField, MenuItem, ToggleButtonGroup, ToggleButton, Chip } from "@mui/material";
+import "./SearchBar.css";
 import SortIcon from "@mui/icons-material/Sort";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import ViewModuleIcon from "@mui/icons-material/ViewModule";
@@ -25,7 +26,7 @@ export default function SearchBar({
   ];
 
   return (
-    <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2, mb: 2, alignItems: "center" }}>
+    <Box className="search-bar">
       <TextField
         label="Buscar"
         value={search}

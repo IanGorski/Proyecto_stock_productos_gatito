@@ -1,0 +1,11 @@
+:root {
+    --card-bg: #fff;
+    --card-radius: 10px;
+}
+
+.product-card {
+    background: var(--card-bg);
+    border-radius: var(--card-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    padding: 12px;
+}

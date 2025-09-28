@@ -1,0 +1,8 @@
+:root {
+    --catlogo-size: 40px;
+}
+
+.cat-logo {
+    width: var(--catlogo-size);
+    height: var(--catlogo-size);
+}

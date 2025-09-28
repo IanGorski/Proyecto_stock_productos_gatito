@@ -1,0 +1,15 @@
+:root {
+    --fab-bg: #0984E3;
+    --fab-size: 56px;
+}
+
+.add-button {
+    background: var(--fab-bg);
+    width: var(--fab-size);
+    height: var(--fab-size);
+    color: #fff;
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    z-index: 100;
+}

@@ -1,11 +1,12 @@
 import { AppBar, Toolbar, Typography, Box, Badge } from "@mui/material";
+import "./Navbar.css";
 import CategoryIcon from "@mui/icons-material/Category";
 import InventoryIcon from "@mui/icons-material/Inventory";
 import CatLogo from "./CatLogo"; // <-- Acá puedo importar el logo del gatito animado
 
 function Navbar({ products, categories }) {
   return (
-    <AppBar position="static" color="primary" elevation={2}>
+    <AppBar position="static" color="primary" elevation={2} className="navbar">
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
         <Box display="flex" alignItems="center">
           <CatLogo /> {/* Aquí está tu gatito animado */}

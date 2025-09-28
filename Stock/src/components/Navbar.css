@@ -1,0 +1,10 @@
+:root {
+    --navbar-bg: #ffe082;
+    --navbar-color: #212121;
+}
+
+.navbar {
+    background: var(--navbar-bg);
+    color: var(--navbar-color);
+    padding: 8px 16px;
+}

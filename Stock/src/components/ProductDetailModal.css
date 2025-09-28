@@ -1,0 +1,10 @@
+:root {
+    --modal-bg: #fff;
+    --modal-radius: 12px;
+}
+
+.product-detail-modal {
+    background: var(--modal-bg);
+    border-radius: var(--modal-radius);
+    padding: 24px;
+}

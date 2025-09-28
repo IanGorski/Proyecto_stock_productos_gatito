@@ -5,7 +5,7 @@ import ProductForm from "../components/ProductForm";
 import CategoryManager from "../components/CategoryManager";
 import SearchBar from "../components/SearchBar";
 import Dashboard from "../components/Dashboard";
-import AddButton from "../components/AddButton";
+// import AddButton from "../components/AddButton";
 import WaveBackground from "../components/WaveBackground";
 import ProductDetailModal from "../components/ProductDetailModal";
 import { Box, Typography, Paper, Switch, FormControlLabel, Button, Tabs, Tab } from "@mui/material";
@@ -150,9 +150,7 @@ export default function Home() {
     }
   }), [darkMode]);
 
-  const handleAddProduct = () => {
-    setEditingProduct({ id: null, name: "", description: "", stock: 1, categoryId: "", image: "" });
-  };
+  // handleAddProduct eliminado
 
   // SOLO UNA "Sin categoría" en los filtros:
   const filterCategories = [
@@ -191,10 +189,7 @@ export default function Home() {
           categories={categories}
           onCategorySelect={nombre => setCategoryFilter(nombre)}
         />
-        <AddButton
-          onClick={handleAddProduct}
-          label="Agregar Producto"
-        />
+        {/* AddButton eliminado */}
         <Paper sx={{ p: 3, mb: 3, borderRadius: 4, boxShadow: 4 }}>
           <Typography variant="h4" gutterBottom sx={{ color: "primary.main", fontWeight: 700 }}>
             Inventario

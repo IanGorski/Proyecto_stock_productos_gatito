@@ -1,0 +1,11 @@
+:root {
+    --form-bg: #fff;
+    --form-radius: 8px;
+}
+
+.product-form {
+    background: var(--form-bg);
+    border-radius: var(--form-radius);
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}

@@ -1,3 +1,106 @@
+/* Mejoras responsive para mobile S (320px) */
+@media (max-width: 400px) {
+  html, body {
+    min-width: 320px;
+    font-size: 15px;
+  }
+  h1, h2, h3 {
+    font-size: 1.2em !important;
+  }
+  .MuiAppBar-root .MuiToolbar-root {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 8px 0;
+  }
+  .MuiTypography-h5 {
+    font-size: 1.1em !important;
+  }
+  .MuiPaper-root {
+    min-width: 0 !important;
+    width: 100% !important;
+    margin-bottom: 8px;
+    box-sizing: border-box;
+  }
+  .MuiTable-root {
+    font-size: 0.9em;
+  }
+  .MuiTableCell-root {
+    padding: 4px 2px;
+    word-break: break-word;
+  }
+  .MuiAvatar-root {
+    width: 32px !important;
+    height: 32px !important;
+  }
+  .MuiButton-root, .MuiFab-root {
+    font-size: 0.95em;
+    min-width: 36px;
+    padding: 6px 10px;
+  }
+  .MuiBox-root {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .csv-buttons {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .MuiFormControl-root {
+    width: 100% !important;
+    margin-bottom: 8px;
+  }
+  .MuiTextField-root {
+    width: 100% !important;
+    margin-bottom: 8px;
+  }
+  .MuiChip-root {
+    font-size: 0.9em;
+    margin-bottom: 4px;
+  }
+  .MuiToggleButtonGroup-root {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .MuiToggleButton-root {
+    font-size: 0.9em;
+    padding: 4px 8px;
+  }
+  .MuiDialog-paper {
+    margin: 8px;
+    width: 95vw;
+    max-width: 320px;
+  }
+  .MuiSnackbar-root {
+    left: 8px !important;
+    right: 8px !important;
+    width: auto !important;
+  }
+  footer, .MuiBox-root[role="footer"] {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 100vw !important;
+    margin-left: -50vw;
+    left: 50%;
+    right: 50%;
+  }
+}
+/* Responsive para botones CSV */
+.csv-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+@media (max-width: 600px) {
+  .csv-buttons {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .csv-buttons button {
+    width: 100%;
+  }
+}
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

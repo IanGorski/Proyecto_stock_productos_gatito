@@ -1,0 +1,10 @@
+:root {
+    --category-bg: #fff;
+    --category-radius: 8px;
+}
+
+.category-manager {
+    background: var(--category-bg);
+    border-radius: var(--category-radius);
+    padding: 12px;
+}

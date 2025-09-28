@@ -1,0 +1,12 @@
+:root {
+    --grid-gap: 16px;
+    --grid-bg: #fff;
+}
+
+.product-grid {
+    display: grid;
+    gap: var(--grid-gap);
+    background: var(--grid-bg);
+    border-radius: 8px;
+    padding: 8px;
+}
