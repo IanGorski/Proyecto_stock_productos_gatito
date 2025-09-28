@@ -15,11 +15,15 @@ El sistema implementa persistencia local (localStorage), dashboards interactivos
 ---
 
 ## 🛠️ Tecnologías y Librerías Utilizadas
-- React 19.x – Framework principal para la UI
-- Vite 7.x – Build tool y servidor de desarrollo
-- Material UI – Componentes visuales y diseño
-- ESLint – Linting y calidad de código
-- CSS Custom Properties – Theming y variables CSS
+- React 19.x – Biblioteca principal para la UI
+- Vite 7.x – Build tool y servidor de desarrollo rápido
+- Material UI (MUI) 7 – Componentes de interfaz y theming
+- Emotion (@emotion/react & styled) – Motor de estilos para MUI
+- Recharts 3 – Gráfico circular (stock por categoría)
+- MUI Icons – Iconografía
+- ESLint 9 – Linting y calidad de código
+- LocalStorage – Persistencia ligera cliente
+- CSS (media queries, utilidades) – Ajustes responsivos y micro‑transiciones
 
 ---
 
@@ -33,32 +37,36 @@ El sistema implementa persistencia local (localStorage), dashboards interactivos
 - Manejo de estado local optimizado con React Hooks
 
 ### 📊 Dashboard y Visualización
-- Dashboard interactivo con métricas de stock y categorías
-- Gráficos de barras y torta personalizados con SVG/Material UI
-- Filtros temporales y búsqueda en tiempo real
+- Dashboard interactivo con métricas clave (productos, categorías, stock bajo, sin stock, sin categoría, stock total)
+- Gráfico circular (pie) de distribución de stock por categoría (Recharts)
+- (Pendiente) Gráfico de barras (mencionado previamente pero aún NO implementado)
+- Búsqueda y filtrado en tiempo real
 - Visualización responsiva adaptable a diferentes resoluciones
 
 ### 🗃️ Gestión de Datos
 - CRUD completo para productos y categorías
-- Paginación inteligente y búsqueda por múltiples criterios
-- Exportación de datos a CSV
-- Validación de formularios y manejo de errores
+- Búsqueda y ordenamiento multi‑criterio (nombre, stock, categoría)
+- Importación y exportación de datos en CSV (incluye reconstrucción de categorías)
+- (Aún no implementado) Paginación – actualmente se manejan todas las filas en memoria
+- Validación básica de formularios y feedback vía Snackbar
 
 ### 📱 Diseño Responsivo
-- Breakpoints específicos: 600px, 900px
-- Interfaz adaptativa para tablets y dispositivos móviles
-- Tablas y grids con scroll horizontal en dispositivos móviles
-- Tipografía escalable y espaciado responsivo
+Mobile‑first. Puntos clave:
+ - <400px: layout compacto (tipografías y paddings reducidos).
+ - <600px: acciones y botones apilados.
+ - 600px–<900px: 2 columnas (hook `useResponsiveColumns`).
+ - ≥900px: grilla completa (4 columnas).
+ - Tablas con scroll horizontal seguro en pantallas chicas.
+ - Modo oscuro persistente + respeto de `prefers-color-scheme`.
 
 ### 🎨 Interfaz de Usuario
-- Diseño minimalista con principios de Material Design
-- Tema claro con alta legibilidad y contraste
-- Animaciones suaves y transiciones CSS optimizadas
-- Componentes interactivos con feedback visual inmediato
-- Modales de confirmación para acciones críticas
+- Diseño minimalista inspirado en Material Design + paleta personalizada
+- Tema claro + modo oscuro (toggle persistente)
+- Transiciones suaves (hover en tarjetas y botones)
+- Feedback visual inmediato (chips de estado, colores según stock)
+- Diálogos de confirmación para acciones destructivas
 
 ---
-
 
 ## 🗂️ Estructura del Proyecto
 
@@ -66,94 +74,136 @@ El sistema implementa persistencia local (localStorage), dashboards interactivos
 Stock/
 ├── public/
 ├── src/
-│   ├── components/               # Componentes reutilizables
-│   │   ├── AddButton.jsx           # Botón flotante para agregar productos
-│   │   ├── CategoryManager.jsx     # Gestión y edición de categorías
-│   │   ├── CatLogo.jsx             # Logo animado del gatito
-│   │   ├── Dashboard.jsx           # Panel de métricas y resumen de stock
-│   │   ├── Footer.jsx              # Pie de página con créditos y enlaces
-│   │   ├── Navbar.jsx              # Barra de navegación superior
-│   │   ├── ProductCard.jsx         # Tarjeta visual de producto
-│   │   ├── ProductDetailModal.jsx  # Modal con detalles ampliados del producto
-│   │   ├── ProductForm.jsx         # Formulario para alta/edición de productos
-│   │   ├── ProductGrid.jsx         # Vista en cuadrícula de productos
-│   │   ├── ProductItem.jsx         # Item individual de producto en listas
-│   │   ├── ProductList.jsx         # Listado de productos en formato tabla
-│   │   ├── SearchBar.jsx           # Barra de búsqueda y filtrado
-│   │   └── WaveBackground.jsx      # Fondo decorativo animado tipo onda
-│   ├── hooks/                    # Custom hooks (lógica reutilizable)
-│   │   └── useResponsiveColumns.js # Hook para columnas responsivas según pantalla
-│   ├── pages/                    # Páginas principales de la app
-│   │   └── Home.jsx                # Página principal con dashboard y productos
-│   ├── App.jsx                   # Componente raíz, gestiona estado global
-│   ├── main.jsx                  # Punto de entrada de la app React
-│   ├── index.css                 # Estilos globales base
-│   └── theme.jsx                 # Theming y variables de diseño
-├── package.json                  # Dependencias y scripts del proyecto
-├── vite.config.js                # Configuración de Vite
-├── eslint.config.js              # Configuración de ESLint
-└── README.md                     # Documentación del proyecto
+│   ├── components/                 # UI y elementos funcionales (cada uno con su .css)
+│   │   ├── AddButton.{jsx,css}        # Botón flotante añadir
+│   │   ├── CategoryManager.{jsx,css}  # CRUD categorías
+│   │   ├── CatLogo.{jsx,css}          # Logo / branding
+│   │   ├── Dashboard.{jsx,css}        # Métricas + KPIs
+│   │   ├── Footer.{jsx,css}           # Pie de página
+│   │   ├── Navbar.{jsx,css}           # Barra superior
+│   │   ├── ProductCard.{jsx,css}      # Tarjeta producto (vista grid)
+│   │   ├── ProductDetailModal.{jsx,css} # Modal detalle
+│   │   ├── ProductForm.{jsx,css}      # Formulario alta / edición
+│   │   ├── ProductGrid.{jsx,css}      # Contenedor métricas + gráfico
+│   │   ├── ProductItem.{jsx,css}      # Representación lista simple
+│   │   ├── ProductList.{jsx,css}      # Tabla productos
+│   │   ├── SearchBar.{jsx,css}        # Filtros y búsqueda
+│   │   └── WaveBackground.{jsx,css}   # Fondo decorativo animado
+│   ├── hooks/
+│   │   └── useResponsiveColumns.js    # Columna dinámica según breakpoint
+│   ├── pages/
+│   │   └── Home.jsx                   # Vista principal (coordina estado)
+│   ├── App.jsx                        # Setup raíz + theming
+│   ├── main.jsx                       # Entry point React
+│   ├── index.css                      # Estilos globales / overrides
+│   └── theme.jsx                      # Tema y palette MUI
+├── package.json                       # Dependencias y scripts
+├── vite.config.js                     # Config Vite
+├── eslint.config.js                   # Reglas ESLint
+└── README.md                          # Este archivo
+
+Nota: La aplicación vive dentro de la subcarpeta `Stock/` (el repositorio raíz no contiene `package.json`).
 ```
 
 ---
 
 ## 🎯 Funcionalidades Principales
-- Dashboard con métricas de stock y categorías
-- Gestión CRUD de productos y categorías
-- Búsqueda y filtrado en tiempo real
-- Interfaz responsiva y moderna
-- Exportación de datos a CSV
-- Animaciones y feedback visual
+- Dashboard con métricas de inventario
+- Gráfico circular de stock por categoría
+- CRUD productos y categorías (con restricciones de borrado seguro)
+- Filtros: texto, categoría, estado de stock, orden dinámico, modo vista (tabla / tarjetas)
+- Importación y exportación CSV
+- Modo oscuro persistente
+- Feedback visual según estado (chips y colores de stock)
 
 ---
 
 ## 🚧 Desafíos Técnicos Resueltos
 1. Persistencia de Datos Local
-   - Sistema robusto con localStorage y estructura JSON jerarquizada
+   - Sin backend: sincronización incremental vía localStorage + normalización mínima
 2. Visualización de Datos
-   - Gráficos interactivos sin librerías pesadas externas
-3. Responsive Design Complejo
-   - Sistema de breakpoints con CSS Grid y Flexbox avanzado
-4. Accesibilidad y UX
-   - Contrastes adecuados, navegación por teclado y feedback visual
+   - Gráfico circular reactivo (Recharts) con datasets dinámicos
+3. Gestión de Filtrado/Ordenamiento
+   - Pipeline de filtros + orden estable sin dependencias externas de estado global
+4. Import/Export CSV con Reconstrucción
+   - Reconstrucción de categorías inexistentes al importar y saneamiento de comillas
+5. UX Adaptativo
+   - Ajustes para pantallas < 400px (diálogos, tablas compactas, chips)
 
 ---
 
 ## 🔧 Instalación y Desarrollo
 ```bash
 # Clonar el repositorio
-git clone [URL_DEL_REPOSITORIO]
+git clone https://github.com/IanGorski/proyecto-stock-productos-gatito.git
+cd proyecto-stock-productos-gatito
+
+# Ir a la carpeta de la app
+cd Stock
 
 # Instalar dependencias
 npm install
 
-# Ejecutar en modo desarrollo
+# Modo desarrollo
 npm run dev
 
-# Linting de código
+# Build producción
+npm run build
+
+# Vista previa local del build
+npm run preview
+
+# Linting
 npm run lint
 ```
+
+### Persistencia
+Los datos (productos, categorías, preferencia de modo oscuro) se guardan en `localStorage`. Un borrado de caché del navegador restablecerá el estado.
+
+### Importación / Exportación CSV
+- Exporta columnas: `ID, Nombre, Descripción, Stock, Categoría, Imagen`
+- Importación recrea categorías faltantes y asigna `Sin categoría` cuando aplica.
+> Sugerencia: realizar respaldo antes de importar para evitar sobrescribir datos accidentalmente.
 
 ---
 
 ## 📦 Distribución y Compatibilidad
-- Compatible con navegadores modernos (Chrome, Firefox, Edge, Safari)
-- Adaptado para dispositivos móviles, tablets y escritorio
-- Resoluciones: Desde 320px (móvil) hasta 4K+ (escritorio)
+- Navegadores modernos (Chrome, Firefox, Edge, Safari). No se testea IE.
+- Resoluciones soportadas: 320px → 4K
+- Renderizado client‑side (SPA pura)
 
 ---
 
 ## 🎨 Principios de Diseño Aplicados
-- DRY (Don't Repeat Yourself): Componentes reutilizables y funciones auxiliares
-- SOLID: Separación de responsabilidades y extensibilidad
-- Mobile First: Diseño responsive desde móviles hacia escritorio
-- Accesibilidad: Contrastes adecuados y navegación por teclado
-- Performance: Componentes optimizados y lazy loading donde aplique
+- DRY: Reutilización de componentes (formularios, tablas, modales)
+- KISS & YAGNI: Sin sobre‑ingeniería para el alcance actual
+- Mobile First progresivo
+- Accesibilidad básica: contraste y tamaños mínimos; (Pendiente) roles ARIA enriquecidos
+- Performance: Memoización selectiva (useMemo), lightweight bundle (sin state managers externos)
 
 ---
 
 ## 📄 Licencia
 Este proyecto está bajo la licencia MIT - ver el archivo LICENSE para más detalles.
+
+---
+
+## 🚀 Despliegue
+La aplicación se despliega en **Vercel** usando un `vercel.json` en la raíz que:
+```jsonc
+{
+   "installCommand": "cd Stock && npm install",
+   "buildCommand": "cd Stock && npm run build",
+   "outputDirectory": "Stock/dist",
+   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+}
+```
+Esto permite que la app (ubicada en la subcarpeta `Stock/`) se construya y sirva como SPA.
+
+### Próximas mejoras de despliegue sugeridas
+- Analizar división de código (code splitting) para reducir tiempo inicial de carga.
+- Añadir meta tags (Open Graph / SEO) en `index.html`.
+- Incorporar PWA (manifiesto + service worker) si se requiere trabajo offline.
 
 ---
 
